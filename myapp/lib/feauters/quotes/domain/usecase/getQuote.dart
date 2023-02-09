@@ -7,6 +7,7 @@ import '../../../../core/error/failure.dart';
 
 class GetQuote implements Usecase<Quote, int> {
   final QuoteRepo repo;
+  
   GetQuote(this.repo);
   @override
   Future<Either<Failure, Quote>> call(int number) async {

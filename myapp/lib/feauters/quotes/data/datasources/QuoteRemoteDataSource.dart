@@ -29,8 +29,7 @@ class QuoteRemoteDataSourceImpl implements QuoteRemoteDataSource {
 
   @override
   Future<QuoteModel> getRandomQuote() async{
-    final random = Random(10);
-      final response = await client.get('https://dummyjson.com/quotes/$random',
+      final response = await client.get('https://dummyjson.com/quotes/3',
         headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
@@ -39,6 +38,6 @@ class QuoteRemoteDataSourceImpl implements QuoteRemoteDataSource {
       throw ServerException();
     }
   }
-  
+
   }
 

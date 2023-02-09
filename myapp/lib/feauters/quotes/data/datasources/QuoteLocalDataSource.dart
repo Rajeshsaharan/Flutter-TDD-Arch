@@ -19,7 +19,7 @@ class QuoteLocalDataStorageImpl implements QuoteLocalDataSource {
   @override
   Future<QuoteModel> getlastQuote() {
     final jsonString = sharedPreferences.getString("MY_KEY");
-    if (jsonString == "") {
+    if (jsonString != " ") {
       return Future.value(QuoteModel.fromjson(jsonDecode(jsonString)));
     } else {
       throw CacheException();

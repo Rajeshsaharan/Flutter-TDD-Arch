@@ -69,7 +69,6 @@ void main() {
   //for getRandom Quote
 
   group("getRandomQuote", () {
-    final random = Random(10);
     final QuoteModel quoteModel =
         QuoteModel.fromjson(jsonDecode(Fixture("fixture.json")));
     test("should call http client method when method  called", () {
@@ -83,7 +82,7 @@ void main() {
       //assert
       verify(
         client.get(
-          'https://dummyjson.com/quotes/$random',
+          'https://dummyjson.com/quotes/3',
           headers: {'Content-Type': 'application/json'},
         ),
       );

@@ -18,4 +18,5 @@ class GetRandomQuote implements Usecase<Quote, NoParams> {
 }
 
 class NoParams {
+  
 }
