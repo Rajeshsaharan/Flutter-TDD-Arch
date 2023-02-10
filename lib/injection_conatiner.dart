@@ -23,8 +23,8 @@ Future<void> init() async {
       QuoteBloc(getQuote: sl(), getRandomQuote: sl(), inputConvertor: sl()));
 
   //*use case
-  sl.registerLazySingleton<Usecase>(() => GetQuote(sl()));
-  sl.registerLazySingleton<Usecase>(() => GetRandomQuote(sl()));
+  sl.registerLazySingleton(() => GetQuote(sl()));
+  sl.registerLazySingleton(() => GetRandomQuote(sl()));
   //* repo
   sl.registerLazySingleton<QuoteRepo>(() => QuoteRepoImpl(
         quoteLocalDataSource: sl(),
@@ -38,12 +38,12 @@ Future<void> init() async {
   sl.registerLazySingleton<QuoteLocalDataSource>(
       () => QuoteLocalDataStorageImpl(sharedPreferences: sl()));
   //! core
-  sl.registerLazySingleton<InputConvertor>(() => InputConvertor());
+  sl.registerLazySingleton(() => InputConvertor());
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   //!external
   final sharedprefrence = await SharedPreferences.getInstance();
-  sl.registerLazySingleton<SharedPreferences>(() => sharedprefrence);
+  sl.registerLazySingleton(() => sharedprefrence);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
 }
