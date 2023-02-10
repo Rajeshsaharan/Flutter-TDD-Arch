@@ -51,7 +51,7 @@ void main() {
           Quote(quote: "test", id: 1, author: "rajesh j saharan");
 
       test("should call the Inputconvertor to change string to valid int",
-          () async {
+          () async* {
         //arrange
         when(mockInputConvertor.getunsignedIntfromString(tStringNumber))
             .thenReturn(Right(1));
@@ -67,7 +67,7 @@ void main() {
       });
 
       test("should Emit the Error message when input is invalid input",
-          () async {
+          () async* {
         //arrange
         when(mockInputConvertor.getunsignedIntfromString(tStringNumber))
             .thenReturn(Left(InvalidInputFailue()));
@@ -94,7 +94,7 @@ void main() {
       });
 
       test("should emit the [loaded and loading] whenever data is returned",
-          () async {
+          () async* {
         //arrange
         when(mockInputConvertor.getunsignedIntfromString(tStringNumber))
             .thenReturn(Right(tNumber));
@@ -111,7 +111,7 @@ void main() {
       });
 
       test("should emit the [loaded , Error] whenever there are data failure",
-          () async {
+          () async* {
         //arrange
         when(mockInputConvertor.getunsignedIntfromString(tStringNumber))
             .thenReturn(Right(tNumber));
@@ -131,7 +131,7 @@ void main() {
 
       test(
         'should emit [Loading, Error] with a proper message for the error when getting data fails',
-        () async {
+        () async* {
           // arrange
           when(mockInputConvertor.getunsignedIntfromString(tStringNumber))
               .thenReturn(Right(tNumber));
